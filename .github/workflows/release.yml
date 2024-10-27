@@ -51,9 +51,6 @@ jobs:
           tag: ${{ steps.version_info.outputs.build_version }}
           body: "For more information about this release please check out the official [Changelog](https://github.com/Ryujinx/Ryujinx/wiki/Changelog)."
           omitBodyDuringUpdate: true
-          owner: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}
-          repo: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}
-          token: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     name: Release for ${{ matrix.platform.name }}
@@ -140,9 +137,6 @@ jobs:
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true
-          owner: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}
-          repo: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}
-          token: ${{ secrets.GITHUB_TOKEN }}
 
   macos_release:
     name: Release MacOS universal
@@ -206,9 +200,6 @@ jobs:
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true
-          owner: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}
-          repo: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}
-          token: ${{ secrets.GITHUB_TOKEN }}
 
   flatpak_release:
     uses: ./.github/workflows/flatpak.yml
