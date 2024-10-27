@@ -30,7 +30,7 @@ jobs:
       - name: Get version info
         id: version_info
         run: |
-          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
+          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.1403" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Create tag
@@ -75,7 +75,7 @@ jobs:
       - name: Get version info
         id: version_info
         run: |
-          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
+          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.1403" >> $GITHUB_OUTPUT
           echo "git_short_hash=$(git rev-parse --short "${{ github.sha }}")" >> $GITHUB_OUTPUT
         shell: bash
 
@@ -169,7 +169,7 @@ jobs:
       - name: Get version info
         id: version_info
         run: |
-          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
+          echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.1403" >> $GITHUB_OUTPUT
           echo "git_short_hash=$(git rev-parse --short "${{ github.sha }}")" >> $GITHUB_OUTPUT
 
       - name: Configure for release
@@ -200,10 +200,3 @@ jobs:
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true
-
-  flatpak_release:
-    uses: ./.github/workflows/flatpak.yml
-    needs: release
-    with:
-      ryujinx_version: "1.1.${{ github.run_number }}"
-    secrets: inherit
